@@ -27,3 +27,8 @@ variable "node_count" {
   description = "Number of Nodes"
   type        = number
 }
+
+variable "zone" {
+  description = "GCP Zone"
+  type        = string
+}

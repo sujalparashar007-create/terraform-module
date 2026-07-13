@@ -7,4 +7,9 @@ terraform {
       version = "~> 6.0"
     }
   }
+
+  backend "gcs" {
+    bucket = "sujal-terraform-state-2026"
+    prefix = "terraform/state"
+  }
 }

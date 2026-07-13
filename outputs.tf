@@ -21,3 +21,12 @@ output "cluster_name" {
 output "cluster_endpoint" {
   value = module.gke.cluster_endpoint
 }
+
+output "gke_cluster_endpoint" {
+  description = "GKE cluster endpoint"
+  value       = module.gke.cluster_endpoint
+}
+
+output "bastion_ip" {
+  value = module.bastion.bastion_ip
+}

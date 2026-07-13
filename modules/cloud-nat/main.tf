@@ -1,8 +1,8 @@
 resource "google_compute_router" "router" {
 
-  name    = "gke-router"
+  name = "gke-router"
 
-  region  = var.region
+  region = var.region
 
   network = var.network_id
 }

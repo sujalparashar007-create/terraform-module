@@ -1,8 +1,8 @@
-project_id = "teak-bebop-323703"
+project_id = "project-6f3b3c54-b345-4d07-be1"
 
 region = "us-east1"
 
-zone = "us-east1-a"
+zone = "us-east1-b"
 
 vpc_name = "demo-vpc"
 
@@ -12,4 +12,4 @@ cluster_name = "private-gke"
 
 machine_type = "e2-standard-2"
 
-node_count = 2
+node_count = 1

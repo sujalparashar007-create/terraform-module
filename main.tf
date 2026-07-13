@@ -21,6 +21,7 @@ module "gke" {
   cluster_name = var.cluster_name
 
   region = var.region
+  zone   = var.zone
 
   network_id = module.network.network_id
 
@@ -29,4 +30,14 @@ module "gke" {
   machine_type = var.machine_type
 
   node_count = var.node_count
+}
+module "bastion" {
+
+  source = "./modules/bastion"
+
+  zone = var.zone
+
+  network_id = module.network.network_id
+
+  subnet_name = module.network.subnet_name
 }

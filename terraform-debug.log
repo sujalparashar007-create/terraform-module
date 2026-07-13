@@ -1,0 +1,476 @@
+2026-07-13T12:55:53.106+0530 [INFO]  Terraform version: 1.15.5
+2026-07-13T12:55:53.111+0530 [DEBUG] using github.com/hashicorp/go-tfe v1.105.0
+2026-07-13T12:55:53.111+0530 [DEBUG] using github.com/hashicorp/hcl/v2 v2.24.0
+2026-07-13T12:55:53.111+0530 [DEBUG] using github.com/hashicorp/terraform-svchost v0.2.1
+2026-07-13T12:55:53.111+0530 [DEBUG] using github.com/zclconf/go-cty v1.18.0
+2026-07-13T12:55:53.111+0530 [INFO]  Go runtime version: go1.25.10
+2026-07-13T12:55:53.111+0530 [INFO]  CLI args: []string{"C:\\Program Files\\Terraform\\terraform.exe", "init", "-reconfigure"}
+2026-07-13T12:55:53.112+0530 [TRACE] Stdout is not a terminal
+2026-07-13T12:55:53.114+0530 [TRACE] Stderr is not a terminal
+2026-07-13T12:55:53.114+0530 [TRACE] Stdin is a terminal
+2026-07-13T12:55:53.123+0530 [DEBUG] Attempting to open CLI config file: C:\Users\user\AppData\Roaming\terraform.rc
+2026-07-13T12:55:53.123+0530 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2026-07-13T12:55:53.126+0530 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2026-07-13T12:55:53.126+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\user\AppData\Roaming\terraform.d\plugins
+2026-07-13T12:55:53.130+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\user\AppData\Roaming\HashiCorp\Terraform\plugins
+2026-07-13T12:55:53.130+0530 [INFO]  CLI command args: []string{"init", "-reconfigure"}
+[0m[1mInitializing modules...[0m
+2026-07-13T12:55:53.140+0530 [TRACE] ModuleInstaller: installing child modules for . into .terraform\modules
+2026-07-13T12:55:53.145+0530 [TRACE] terraform.NewContext: starting
+2026-07-13T12:55:53.145+0530 [TRACE] terraform.NewContext: complete
+2026-07-13T12:55:53.145+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.145+0530 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2026-07-13T12:55:53.145+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.145+0530 [TRACE] ModuleTransformer: Added module.network as *terraform.nodeInstallModule
+2026-07-13T12:55:53.145+0530 [TRACE] ModuleTransformer: Added module.cloud_nat as *terraform.nodeInstallModule
+2026-07-13T12:55:53.145+0530 [TRACE] ModuleTransformer: Added module.gke as *terraform.nodeInstallModule
+2026-07-13T12:55:53.145+0530 [TRACE] ModuleTransformer: Added module.bastion as *terraform.nodeInstallModule
+2026-07-13T12:55:53.145+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.145+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.subnet_name" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.cluster_name" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.region" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.vpc_name" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "module.network" references: [var.vpc_name var.subnet_name var.region]
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "module.cloud_nat" references: [var.region]
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "module.gke" references: [var.cluster_name var.region var.zone var.machine_type var.node_count]
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "module.bastion" references: [var.zone]
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.machine_type" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.node_count" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.project_id" references: []
+2026-07-13T12:55:53.145+0530 [DEBUG] ReferenceTransformer: "var.zone" references: []
+2026-07-13T12:55:53.145+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.145+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.145+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.146+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.146+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.146+0530 [TRACE] Completed graph transform:
+module.bastion - *terraform.nodeInstallModule
+  var.zone - *terraform.NodeRootVariable
+module.cloud_nat - *terraform.nodeInstallModule
+  var.region - *terraform.NodeRootVariable
+module.gke - *terraform.nodeInstallModule
+  var.cluster_name - *terraform.NodeRootVariable
+  var.machine_type - *terraform.NodeRootVariable
+  var.node_count - *terraform.NodeRootVariable
+  var.region - *terraform.NodeRootVariable
+  var.zone - *terraform.NodeRootVariable
+module.network - *terraform.nodeInstallModule
+  var.region - *terraform.NodeRootVariable
+  var.subnet_name - *terraform.NodeRootVariable
+  var.vpc_name - *terraform.NodeRootVariable
+root - terraform.graphNodeRoot
+  module.bastion - *terraform.nodeInstallModule
+  module.cloud_nat - *terraform.nodeInstallModule
+  module.gke - *terraform.nodeInstallModule
+  module.network - *terraform.nodeInstallModule
+var.cluster_name - *terraform.NodeRootVariable
+var.machine_type - *terraform.NodeRootVariable
+var.node_count - *terraform.NodeRootVariable
+var.region - *terraform.NodeRootVariable
+var.subnet_name - *terraform.NodeRootVariable
+var.vpc_name - *terraform.NodeRootVariable
+var.zone - *terraform.NodeRootVariable
+  ------
+2026-07-13T12:55:53.146+0530 [DEBUG] Starting graph walk: walkInit
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.node_count": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.node_count": belongs to
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.cluster_name": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.cluster_name": belongs to
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.region": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.vpc_name": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.vpc_name": belongs to
+2026-07-13T12:55:53.147+0530 [TRACE] NodeRootVariable: evaluating var.node_count
+2026-07-13T12:55:53.147+0530 [TRACE] vertex "var.machine_type": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.148+0530 [TRACE] vertex "var.machine_type": belongs to
+2026-07-13T12:55:53.148+0530 [TRACE] vertex "var.node_count": visit complete
+2026-07-13T12:55:53.148+0530 [TRACE] vertex "var.subnet_name": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.148+0530 [TRACE] vertex "var.subnet_name": belongs to
+2026-07-13T12:55:53.148+0530 [TRACE] vertex "var.region": belongs to
+2026-07-13T12:55:53.148+0530 [TRACE] NodeRootVariable: evaluating var.cluster_name
+2026-07-13T12:55:53.149+0530 [TRACE] vertex "var.cluster_name": visit complete
+2026-07-13T12:55:53.149+0530 [TRACE] NodeRootVariable: evaluating var.vpc_name
+2026-07-13T12:55:53.149+0530 [TRACE] vertex "var.zone": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.149+0530 [TRACE] vertex "var.zone": belongs to
+2026-07-13T12:55:53.149+0530 [TRACE] vertex "var.vpc_name": visit complete
+2026-07-13T12:55:53.149+0530 [TRACE] NodeRootVariable: evaluating var.machine_type
+2026-07-13T12:55:53.149+0530 [TRACE] vertex "var.machine_type": visit complete
+2026-07-13T12:55:53.149+0530 [TRACE] NodeRootVariable: evaluating var.subnet_name
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "var.subnet_name": visit complete
+2026-07-13T12:55:53.150+0530 [TRACE] NodeRootVariable: evaluating var.region
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "var.region": visit complete
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "module.network": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "module.network": belongs to
+2026-07-13T12:55:53.150+0530 [TRACE] NodeRootVariable: evaluating var.zone
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "var.zone": visit complete
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "module.bastion": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.150+0530 [TRACE] vertex "module.bastion": belongs to
+2026-07-13T12:55:53.151+0530 [TRACE] vertex "module.cloud_nat": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.151+0530 [TRACE] vertex "module.cloud_nat": belongs to
+2026-07-13T12:55:53.151+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.151+0530 [TRACE] vertex "module.gke": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.151+0530 [TRACE] vertex "module.gke": belongs to
+2026-07-13T12:55:53.151+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.151+0530 [DEBUG] Module installer: begin network
+2026-07-13T12:55:53.157+0530 [TRACE] ModuleInstaller: Module installer: network <nil> already installed in modules\network
+2026-07-13T12:55:53.157+0530 [TRACE] vertex "module.network": expanding dynamic subgraph
+2026-07-13T12:55:53.157+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.157+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.158+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.158+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.158+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.158+0530 [DEBUG] ReferenceTransformer: "module.network.var.vpc_name (expand)" references: []
+2026-07-13T12:55:53.158+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.158+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.158+0530 [DEBUG] ReferenceTransformer: "module.network.var.subnet_name (expand)" references: []
+2026-07-13T12:55:53.158+0530 [DEBUG] ReferenceTransformer: "module.network.var.region (expand)" references: []
+2026-07-13T12:55:53.158+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.158+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.159+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.159+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.159+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.159+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.159+0530 [TRACE] vertex "module.network": entering dynamic subgraph
+2026-07-13T12:55:53.159+0530 [DEBUG] Module installer: begin bastion
+2026-07-13T12:55:53.159+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.159+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.160+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.160+0530 [TRACE] vertex "module.network": dynamic subgraph completed successfully
+2026-07-13T12:55:53.161+0530 [TRACE] vertex "module.network": visit complete
+2026-07-13T12:55:53.164+0530 [TRACE] ModuleInstaller: Module installer: bastion <nil> already installed in modules\bastion
+2026-07-13T12:55:53.164+0530 [TRACE] vertex "module.bastion": expanding dynamic subgraph
+2026-07-13T12:55:53.164+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.164+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.164+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.164+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.164+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.164+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.164+0530 [DEBUG] ReferenceTransformer: "module.bastion.var.zone (expand)" references: []
+2026-07-13T12:55:53.164+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.164+0530 [DEBUG] ReferenceTransformer: "module.bastion.var.network_id (expand)" references: []
+2026-07-13T12:55:53.165+0530 [DEBUG] ReferenceTransformer: "module.bastion.var.subnet_name (expand)" references: []
+2026-07-13T12:55:53.165+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.165+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.165+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.165+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.165+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.165+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.165+0530 [TRACE] vertex "module.bastion": entering dynamic subgraph
+2026-07-13T12:55:53.165+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.165+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.165+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.165+0530 [TRACE] vertex "module.bastion": dynamic subgraph completed successfully
+2026-07-13T12:55:53.165+0530 [TRACE] vertex "module.bastion": visit complete
+2026-07-13T12:55:53.166+0530 [DEBUG] Module installer: begin cloud_nat
+2026-07-13T12:55:53.170+0530 [TRACE] ModuleInstaller: Module installer: cloud_nat <nil> already installed in modules\cloud-nat
+2026-07-13T12:55:53.170+0530 [TRACE] vertex "module.cloud_nat": expanding dynamic subgraph
+2026-07-13T12:55:53.170+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.170+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.170+0530 [DEBUG] ReferenceTransformer: "module.cloud_nat.var.network_id (expand)" references: []
+2026-07-13T12:55:53.170+0530 [DEBUG] ReferenceTransformer: "module.cloud_nat.var.region (expand)" references: []
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.170+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.170+0530 [TRACE] vertex "module.cloud_nat": entering dynamic subgraph
+2026-07-13T12:55:53.170+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.170+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.171+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.171+0530 [TRACE] vertex "module.cloud_nat": dynamic subgraph completed successfully
+2026-07-13T12:55:53.171+0530 [DEBUG] Module installer: begin gke
+2026-07-13T12:55:53.171+0530 [TRACE] vertex "module.cloud_nat": visit complete
+2026-07-13T12:55:53.174+0530 [TRACE] ModuleInstaller: Module installer: gke <nil> already installed in modules\gke
+2026-07-13T12:55:53.174+0530 [TRACE] vertex "module.gke": expanding dynamic subgraph
+2026-07-13T12:55:53.175+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.node_count (expand)" references: []
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.zone (expand)" references: []
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.cluster_name (expand)" references: []
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.region (expand)" references: []
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.network_id (expand)" references: []
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.subnet_name (expand)" references: []
+2026-07-13T12:55:53.175+0530 [DEBUG] ReferenceTransformer: "module.gke.var.machine_type (expand)" references: []
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.175+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.175+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.175+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "module.gke": entering dynamic subgraph
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "module.gke": dynamic subgraph completed successfully
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "module.gke": visit complete
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.175+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.177+0530 [TRACE] modsdir: writing modules manifest to .terraform\modules\modules.json
+2026-07-13T12:55:53.182+0530 [TRACE] terraform.NewContext: starting
+2026-07-13T12:55:53.182+0530 [TRACE] terraform.NewContext: complete
+2026-07-13T12:55:53.182+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.182+0530 [TRACE] ModuleTransformer: Added module.network as *terraform.nodeInstallModule
+2026-07-13T12:55:53.182+0530 [TRACE] ModuleTransformer: Added module.cloud_nat as *terraform.nodeInstallModule
+2026-07-13T12:55:53.182+0530 [TRACE] ModuleTransformer: Added module.gke as *terraform.nodeInstallModule
+2026-07-13T12:55:53.182+0530 [TRACE] ModuleTransformer: Added module.bastion as *terraform.nodeInstallModule
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.machine_type" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "module.cloud_nat" references: [var.region]
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "module.gke" references: [var.zone var.machine_type var.node_count var.cluster_name var.region]
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "module.bastion" references: [var.zone]
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.subnet_name" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.node_count" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.project_id" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "module.network" references: [var.vpc_name var.subnet_name var.region]
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.region" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.zone" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.vpc_name" references: []
+2026-07-13T12:55:53.182+0530 [DEBUG] ReferenceTransformer: "var.cluster_name" references: []
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.182+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.182+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.183+0530 [TRACE] Completed graph transform:
+module.bastion - *terraform.nodeInstallModule
+  var.zone - *terraform.NodeRootVariable
+module.cloud_nat - *terraform.nodeInstallModule
+  var.region - *terraform.NodeRootVariable
+module.gke - *terraform.nodeInstallModule
+  var.cluster_name - *terraform.NodeRootVariable
+  var.machine_type - *terraform.NodeRootVariable
+  var.node_count - *terraform.NodeRootVariable
+  var.region - *terraform.NodeRootVariable
+  var.zone - *terraform.NodeRootVariable
+module.network - *terraform.nodeInstallModule
+  var.region - *terraform.NodeRootVariable
+  var.subnet_name - *terraform.NodeRootVariable
+  var.vpc_name - *terraform.NodeRootVariable
+root - terraform.graphNodeRoot
+  module.bastion - *terraform.nodeInstallModule
+  module.cloud_nat - *terraform.nodeInstallModule
+  module.gke - *terraform.nodeInstallModule
+  module.network - *terraform.nodeInstallModule
+var.cluster_name - *terraform.NodeRootVariable
+var.machine_type - *terraform.NodeRootVariable
+var.node_count - *terraform.NodeRootVariable
+var.region - *terraform.NodeRootVariable
+var.subnet_name - *terraform.NodeRootVariable
+var.vpc_name - *terraform.NodeRootVariable
+var.zone - *terraform.NodeRootVariable
+  ------
+2026-07-13T12:55:53.183+0530 [DEBUG] Starting graph walk: walkInit
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.subnet_name": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.subnet_name": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] NodeRootVariable: evaluating var.subnet_name
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.machine_type": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.machine_type": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] NodeRootVariable: evaluating var.machine_type
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.machine_type": visit complete
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.region": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.region": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] NodeRootVariable: evaluating var.region
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.region": visit complete
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "module.cloud_nat": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "module.cloud_nat": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.zone": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.zone": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.vpc_name": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.vpc_name": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.cluster_name": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.cluster_name": belongs to
+2026-07-13T12:55:53.183+0530 [TRACE] vertex "var.node_count": starting visit (*terraform.NodeRootVariable)
+2026-07-13T12:55:53.184+0530 [TRACE] vertex "var.node_count": belongs to
+2026-07-13T12:55:53.184+0530 [TRACE] vertex "var.subnet_name": visit complete
+2026-07-13T12:55:53.184+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.184+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.185+0530 [TRACE] vertex "module.cloud_nat": expanding dynamic subgraph
+2026-07-13T12:55:53.185+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.185+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.185+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.185+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.185+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.185+0530 [TRACE] NodeRootVariable: evaluating var.zone
+2026-07-13T12:55:53.185+0530 [TRACE] vertex "var.zone": visit complete
+2026-07-13T12:55:53.185+0530 [TRACE] NodeRootVariable: evaluating var.vpc_name
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "var.vpc_name": visit complete
+2026-07-13T12:55:53.186+0530 [DEBUG] ReferenceTransformer: "module.cloud_nat.var.region (expand)" references: []
+2026-07-13T12:55:53.186+0530 [DEBUG] ReferenceTransformer: "module.cloud_nat.var.network_id (expand)" references: []
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.bastion": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.network": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.bastion": belongs to
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.network": belongs to
+2026-07-13T12:55:53.186+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.186+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.186+0530 [TRACE] NodeRootVariable: evaluating var.cluster_name
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "var.cluster_name": visit complete
+2026-07-13T12:55:53.186+0530 [TRACE] NodeRootVariable: evaluating var.node_count
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "var.node_count": visit complete
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.gke": starting visit (*terraform.nodeInstallModule)
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.gke": belongs to
+2026-07-13T12:55:53.186+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.186+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.186+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.186+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.cloud_nat": entering dynamic subgraph
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.cloud_nat": dynamic subgraph completed successfully
+2026-07-13T12:55:53.186+0530 [TRACE] vertex "module.cloud_nat": visit complete
+2026-07-13T12:55:53.186+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.186+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.187+0530 [TRACE] vertex "module.bastion": expanding dynamic subgraph
+2026-07-13T12:55:53.187+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.187+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.187+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.187+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.188+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.188+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.188+0530 [DEBUG] ReferenceTransformer: "module.bastion.var.network_id (expand)" references: []
+2026-07-13T12:55:53.188+0530 [DEBUG] ReferenceTransformer: "module.bastion.var.subnet_name (expand)" references: []
+2026-07-13T12:55:53.188+0530 [DEBUG] ReferenceTransformer: "module.bastion.var.zone (expand)" references: []
+2026-07-13T12:55:53.188+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.188+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.188+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.188+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.188+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.188+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.188+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.188+0530 [TRACE] vertex "module.bastion": entering dynamic subgraph
+2026-07-13T12:55:53.188+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.188+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.188+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.188+0530 [TRACE] vertex "module.bastion": dynamic subgraph completed successfully
+2026-07-13T12:55:53.188+0530 [TRACE] vertex "module.bastion": visit complete
+2026-07-13T12:55:53.192+0530 [TRACE] vertex "module.network": expanding dynamic subgraph
+2026-07-13T12:55:53.192+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.193+0530 [TRACE] terraform.contextPlugins: Initializing provider "registry.terraform.io/hashicorp/google" to read its schema
+2026-07-13T12:55:53.193+0530 [WARN]  Error loading schema for registry.terraform.io/hashicorp/google to determine its functions: failed to instantiate provider "registry.terraform.io/hashicorp/google" to obtain schema: unavailable provider "registry.terraform.io/hashicorp/google"
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.193+0530 [DEBUG] ReferenceTransformer: "module.network.var.vpc_name (expand)" references: []
+2026-07-13T12:55:53.193+0530 [DEBUG] ReferenceTransformer: "module.network.var.subnet_name (expand)" references: []
+2026-07-13T12:55:53.193+0530 [DEBUG] ReferenceTransformer: "module.network.var.region (expand)" references: []
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.193+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.193+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.193+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.193+0530 [TRACE] vertex "module.network": entering dynamic subgraph
+2026-07-13T12:55:53.193+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.193+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.193+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.193+0530 [TRACE] vertex "module.network": dynamic subgraph completed successfully
+2026-07-13T12:55:53.193+0530 [TRACE] vertex "module.network": visit complete
+2026-07-13T12:55:53.194+0530 [TRACE] vertex "module.gke": expanding dynamic subgraph
+2026-07-13T12:55:53.194+0530 [TRACE] building graph for terraform dependencies
+2026-07-13T12:55:53.194+0530 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2026-07-13T12:55:53.194+0530 [TRACE] Executing graph transform *terraform.ModuleTransformer
+2026-07-13T12:55:53.194+0530 [TRACE] Executing graph transform *terraform.LocalTransformer
+2026-07-13T12:55:53.194+0530 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.node_count (expand)" references: []
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.zone (expand)" references: []
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.cluster_name (expand)" references: []
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.region (expand)" references: []
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.network_id (expand)" references: []
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.subnet_name (expand)" references: []
+2026-07-13T12:55:53.194+0530 [DEBUG] ReferenceTransformer: "module.gke.var.machine_type (expand)" references: []
+2026-07-13T12:55:53.194+0530 [TRACE] Executing graph transform *terraform.TransformFilter
+2026-07-13T12:55:53.194+0530 [TRACE] Executing graph transform *terraform.variableValidationTransformer
+2026-07-13T12:55:53.195+0530 [TRACE] variableValidationTransformer: adding validation nodes for any existing variable evaluation nodes
+2026-07-13T12:55:53.195+0530 [TRACE] Executing graph transform *terraform.RootTransformer
+2026-07-13T12:55:53.195+0530 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2026-07-13T12:55:53.195+0530 [TRACE] Completed graph transform:
+root - terraform.graphNodeRoot
+  ------
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "module.gke": entering dynamic subgraph
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "root": visit complete
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "module.gke": dynamic subgraph completed successfully
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "module.gke": visit complete
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "root": starting visit (terraform.graphNodeRoot)
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "root": does not belong to any module instance
+2026-07-13T12:55:53.195+0530 [TRACE] vertex "root": visit complete
+[0m[1mInitializing provider plugins found in the configuration...[0m
+- Finding hashicorp/google versions matching "~> 6.0"...
+2026-07-13T12:55:53.195+0530 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2026-07-13T12:55:54.144+0530 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/google/versions
+2026-07-13T12:55:54.145+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/google/versions
+2026-07-13T12:55:54.235+0530 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-07-13T12:55:54.243+0530 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/google v6.50.0 for windows_386 at .terraform\providers\registry.terraform.io\hashicorp\google\6.50.0\windows_386
+2026-07-13T12:55:54.244+0530 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\google\6.50.0\windows_386 as a candidate package for registry.terraform.io/hashicorp/google 6.50.0
+2026-07-13T12:55:54.244+0530 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/google/6.50.0/download/windows/386
+2026-07-13T12:55:54.244+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/google/6.50.0/download/windows/386
+2026-07-13T12:55:54.312+0530 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-google/6.50.0/terraform-provider-google_6.50.0_SHA256SUMS
+2026-07-13T12:55:54.312+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-google/6.50.0/terraform-provider-google_6.50.0_SHA256SUMS
+2026-07-13T12:55:54.497+0530 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-google/6.50.0/terraform-provider-google_6.50.0_SHA256SUMS.72D7468F.sig
+2026-07-13T12:55:54.497+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-google/6.50.0/terraform-provider-google_6.50.0_SHA256SUMS.72D7468F.sig
+- Installing hashicorp/google v6.50.0...
+2026-07-13T12:55:54.586+0530 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/google v6.50.0 from https://releases.hashicorp.com/terraform-provider-google/6.50.0/terraform-provider-google_6.50.0_windows_386.zip
+2026-07-13T12:55:54.589+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-google/6.50.0/terraform-provider-google_6.50.0_windows_386.zip
+2026-07-13T12:56:20.128+0530 [WARN]  expired openpgp key from HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-07-13T12:56:20.128+0530 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-07-13T12:56:20.162+0530 [WARN]  expired openpgp key from HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2026-07-13T12:56:22.519+0530 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2026-07-13T12:56:22.527+0530 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/google v6.50.0 for windows_386 at .terraform\providers\registry.terraform.io\hashicorp\google\6.50.0\windows_386
+2026-07-13T12:56:22.528+0530 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\google\6.50.0\windows_386 as a candidate package for registry.terraform.io/hashicorp/google 6.50.0
+- Installed hashicorp/google v6.50.0 (signed by HashiCorp)
+
+[0m[1mInitializing the backend...[0m
+2026-07-13T12:56:23.673+0530 [TRACE] Meta.Backend: built configuration for "gcs" backend with hash value -1000341209
+2026-07-13T12:56:23.673+0530 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2026-07-13T12:56:23.673+0530 [TRACE] Meta.Backend: moving from default local state only to "gcs" backend
+2026-07-13T12:56:23.674+0530 [DEBUG] checking for provisioner in "."
+2026-07-13T12:56:23.674+0530 [DEBUG] checking for provisioner in "C:\\Program Files\\Terraform"
+2026-07-13T12:56:23.675+0530 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2026-07-13T12:56:23.675+0530 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2026-07-13T12:56:23.677+0530 [TRACE] statemgr.Filesystem: read snapshot with lineage "ac8e6ba1-d2cb-8008-5d55-80913226635b" serial 40
+2026-07-13T12:56:23.677+0530 [TRACE] Meta.Backend: will need to migrate workspace states because of existing "default" workspace
+2026-07-13T12:56:23.685+0530 [INFO]  backendMigrateState: need to migrate from "local" to "gcs" backend config
+
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mError inspecting states in the "local" backend:
+[31m│[0m [0m    querying Cloud Storage failed: googleapi: Error 403: There is an account problem for the requested project., forbidden
+[31m│[0m [0m
+[31m│[0m [0mPrior to changing backends, Terraform inspects the source and destination
+[31m│[0m [0mstates to determine what kind of migration steps need to be taken, if any.
+[31m│[0m [0mTerraform failed to load the states. The data in both the source and the
+[31m│[0m [0mdestination remain unmodified. Please resolve the above error and try again.[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m
+[31m╵[0m[0m
